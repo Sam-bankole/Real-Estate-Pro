@@ -37,6 +37,7 @@ export default function Header() {
     top: 0,
     width: "100%",
     transition: "background-color 0.5s ease, position 0.5s ease",
+    zIndex: "99999"
   };
 
   return (
@@ -78,13 +79,13 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className=" flex-none w-11 text-center justify-self-center text-amber-500 md:hidden">
+        <div className=" flex-none w-11 text-center justify-self-center text-amber-500 md:hidden cursor-pointer">
           <FaPhoneAlt />
         </div>
         <div className="hidden md:block flex-none mr-4" onClick={toggleMenu}>
           <div class="background">
             <button
-              class="menu__icon"
+              class="menu__icon cursor-none"
               className={`menu__icon ${isMenuOpen ? "active" : ""}`}
             >
               <span></span>
@@ -135,7 +136,7 @@ export default function Header() {
                   </Link>
                 </li>
               </ul>
-              <div className=" text-amber-500 mb-7 ml-3">
+              <div className=" text-amber-500 mb-7 ml-3 cursor-pointer">
                 <FaPhoneAlt className="w-12 h-8" />
               </div>
             </div>
