@@ -26,9 +26,6 @@ const db = getDatabase(app);
 const propertiesInDB = databaseRef(db, "propertyList");
 
 const LikeButton = () => {
-  
-
-
   const [likeCount, setLikeCount] = useState(0);
   const [liked, setLiked] = useState(false);
 
@@ -37,14 +34,22 @@ const LikeButton = () => {
     likescount();
   });
 
-function likescount(){
+  function likescount() {
     onValue(propertiesInDB, function (snapshot) {
-        let propertyId = Object.keys(snapshot.val());
+      if (snapshot.exists()) {
+        let propertyIds = Object.keys(snapshot.val());
 
-        fetchLikes(propertyId)
-        handleLikeClick(propertyId)
-      });
-}
+        propertyIds.forEach((propertyId) => {
+          fetchLikes(propertyId);
+        });
+
+        // fetchLikes(propertyId)
+        // handleLikeClick(propertyIds)
+      } else {
+        console.log("no likes yet");
+      }
+    });
+  }
 
   const fetchLikes = async (propertyId) => {
     try {
@@ -84,7 +89,7 @@ function likescount(){
   return (
     <div>
       <div className=" flex flex-col items-center">
-        <MdFavoriteBorder onClick={handleLikeClick} />
+        <MdFavoriteBorder onClick={() => handleLikeClick()} />
         <div className=" text-xs">{likeCount}</div>
       </div>
     </div>

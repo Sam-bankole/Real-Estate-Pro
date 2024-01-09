@@ -83,10 +83,10 @@ export default function Header() {
           <FaPhoneAlt />
         </div>
         <div className="hidden md:block flex-none mr-4" onClick={toggleMenu}>
-          <div class="background">
+          <div className="background">
             <button
-              class="menu__icon cursor-none"
-              className={`menu__icon ${isMenuOpen ? "active" : ""}`}
+              // class="menu__icon cursor-none"
+              className={`menu__icon cursor-none menu__icon ${isMenuOpen ? "active" : ""}` }
             >
               <span></span>
               <span></span>

@@ -187,3 +187,12 @@ button {
     width: 100px;
   }
 } */
+
+
+.invisible-scrollbar::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.invisible-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
